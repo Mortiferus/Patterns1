@@ -1,0 +1,8 @@
+wsl -d docker-desktop
+sysctl -w vm.max_map_count=262144
+
+---
+icacls data/elasticsearch /grant Everyone:F /t
+
+---
+docker-compose -p reportportal up -d
