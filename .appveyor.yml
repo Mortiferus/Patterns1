@@ -1,0 +1,18 @@
+image: Ubuntu2004
+
+stack: jdk 11
+
+branches:
+  only:
+    - master
+
+build: off
+
+install:
+  - java -jar ./artifacts/app-card-delivery.jar &
+  - sudo apt-get -qq update
+  - sudo apt-get install google-chrome-stable > /dev/null
+
+build_script:
+   - chmod +x gradlew
+  - ./gradlew test --info --warning-mode all
