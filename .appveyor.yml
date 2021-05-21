@@ -1,18 +1,17 @@
-image: Ubuntu2004
+image: Ubuntu 
 
-stack: jdk 11
+stack: jdk 11  
 
 branches:
   only:
-    - master
+    - master 
 
-build: off
+build: off 
 
 install:
+
   - java -jar ./artifacts/app-card-delivery.jar &
-  - sudo apt-get -qq update
-  - sudo apt-get install google-chrome-stable > /dev/null
 
 build_script:
-   - chmod +x gradlew
-   - ./gradlew test --info
+  - chmod +x ./gradlew
+  - ./gradlew test --info "-Dselenide.headless=true"
